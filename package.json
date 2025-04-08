@@ -7,9 +7,6 @@
     "start": "node dist/index.js",
     "dev": "node index.js",
     "build": "rollup -c",
-    "clean": "rm -rf dist",
-    "prebuild": "npm run clean",
-    "postbuild": "cp .env dist/ 2>/dev/null || :",
     "serve": "npm run build && npm run start"
   },
   "dependencies": {

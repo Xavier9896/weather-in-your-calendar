@@ -69,14 +69,14 @@ const windDirectionArrow = (deg) => {
 
 // 生成天气描述
 const makeDescriptions = (data) => {
-  let desc = `${skyconToEmoji(data.skycon)} ${skyconToChinese(data.skycon)}\n\n`;
-  desc += `🌅 日出 ${data.astro.sunrise.time} 日落 ${data.astro.sunset.time}\n\n`;
-  desc += `⚡️ 气压 ${data.pressure.avg} 百帕\n\n`;
-  desc += `💧 湿度 ${data.humidity.avg * 100}%\n\n`;
-  desc += `💨 风速最高 ${data.wind.max.speed} 米/秒\n`;
-  desc += `🚩 风向 ${windDirectionPro(data.wind.max.direction)} ${windDirectionArrow(data.wind.max.direction)}\n\n`;
-  desc += `🌡 温度: ${data.temperature.min}°C ~ ${data.temperature.max}°C\n\n`;
-  desc += `☔️ 降水量: ${data.precipitation.avg}毫米 (${data.precipitation.probability}%)\n\n`;
+  let desc = `${skyconToEmoji(data.skycon)} ${skyconToChinese(data.skycon)}\\n\\n`;
+  desc += `🌅 日出 ${data.astro.sunrise.time} 日落 ${data.astro.sunset.time}\\n\\n`;
+  desc += `⚡️ 气压 ${data.pressure.avg} 百帕\\n\\n`;
+  desc += `💧 湿度 ${data.humidity.avg * 100}%\\n\\n`;
+  desc += `💨 风速最高 ${data.wind.max.speed} 米/秒\\n\\n`;
+  desc += `🚩 风向 ${windDirectionPro(data.wind.max.direction)} ${windDirectionArrow(data.wind.max.direction)}\\n\\n`;
+  desc += `🌡 温度: ${data.temperature.min}°C ~ ${data.temperature.max}°C\\n\\n`;
+  desc += `☔️ 降水量: ${data.precipitation.avg}毫米 (${data.precipitation.probability}%)\\n\\n`;
   desc += '数据来源: 彩云天气API';
   return desc;
 };
@@ -241,7 +241,7 @@ UID:${date.format('YYYYMMDD')}@weather-in-calendar
 DTSTAMP;VALUE=DATE:${moment().format('YYYYMMDDTHHmmss')}
 DTSTART;VALUE=DATE:${date.format('YYYYMMDD')}
 ${location === 'show' ? `LOCATION:${locationDesc}\n` : ''}X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
-URL;VALUE=URI:https://caiyunapp.com
+URL;VALUE=URI:weather.rss-calendar.cn
 DTEND;VALUE=DATE:${date.add(1, 'day').format('YYYYMMDD')}
 X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC
 DESCRIPTION;LANGUAGE=zh:${makeDescriptions(dayWeather)}
