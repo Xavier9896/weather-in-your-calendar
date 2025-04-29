@@ -1,64 +1,60 @@
-# Weather in your Calendar   ⛅️ 26°
+# 日历天气订阅服务
 
-This is the code powering the [Weather in your Calendar](https://weather.vejnoe.dk/?from=github.com).
+这是一个基于 Node.js 的日历天气订阅服务，提供天气预报信息功能。用户可以通过订阅生成的日历文件，在日历应用中查看未来多天的天气预报。
 
-It's a simple PHP script generating a .ical formated calendar with a 16 days weather forecast with data from [OpenWeatherMap](https://openweathermap.org/).
+## 功能特点
 
-[You can try it out here](https://weather.vejnoe.dk/?from=github.com)
+- 支持未来15天的天气预报
+- 生成标准的 iCal 格式日历文件
+- 使用表情符号展示天气状况
+- 天气数据缓存功能，优化请求频率
 
-![Calendar preview](https://weather.vejnoe.dk/images/weather-calendar-screenshot.png)
+## 技术栈
 
-## URL parameters
+- Node.js
+- Express
+- SQLite3
+- Axios
+- Day.js
 
-#### Usage
-You can upload it to your host and enter the following url like so:
+## 安装与使用
 
-```url
-https://yourdomain.com/weather-cal.php?city=London&units=imperial
+1. 克隆项目
+```
+git clone https://github.com/yourusername/weather-in-your-calendar.git
 ```
 
-#### Options
+2. 安装依赖
+```
+cd weather-in-your-calendar
+npm install
+```
 
-Key | Values
---- | ------
-`city` | `city name` or <br>`city name,state code` or <br>`city name,state code,country code`
-`units` | `metric` or `imperial`
-`temperature` | `day` or `low-high`
-`location` | `show` or `hide`
+3. 创建 .env 文件并配置（参考 .env.example）
 
-## System Requirements
+4. 启动服务
+```
+npm start
+```
 
-- A calendar application that supports .ical
-- A system the supports Unicode 7+ *(Released: 2014 June 16)*
+开发模式：
+```
+npm run dev
+```
 
-*These are the emojis used so fare:*
+## API 参数
 
-#### Emojis in Event Title
+访问 URL 示例：
+```
+http://localhost:3000/weather?areaCode=370100
+```
 
-Your Browser | Emoji code | API names
------------- | ---------- | ---------
-☀️ | `:sunny:` | `01d`
-✨ | `:sparkles:` | `01n`
-🌤 | `:sun_behind_small_cloud:` | `02d`, ```02n```
-☁️ | `:cloud:` | `03d`, `03n`, `04d`, `04n`
-🌧 | `:cloud_with_rain:` | `09d`, `09n`
-🌦 | `:sun_behind_rain_cloud:` | `10d`, `10n`
-⛈ | `:cloud_with_lightning_and_rain:` | `11d`, `11n`
-🌨 | `:cloud_with_rain:` | `13d`, `13n`
-🌫 | `:fog:` | `50d`, `50n`
-🤔 | `:thinking:` | No match
+| 参数名 | 说明 | 可选值 | 默认值 |
+|-------|------|-------|-------|
+| areaCode | 地区代码 | 城市区域代码 | - |
+| location | 是否显示位置 | show/hide | show |
+| temperature | 温度显示格式 | day/minmax | day |
 
-#### Emojis in the Description
+## 许可证
 
-Your Browser | Emoji code
------------- | ----------
-🌅 | `:sunrise:`
-⚡️ | `:zap:`
-💧 | `:droplet:`
-💨 | `:dash:`
-🚩 | `:triangular_flag_on_post:`
-
-
-## Check it out on Product Hunt
-
-[![Featured on Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=242724&theme=light)](https://www.producthunt.com/posts/weather-in-your-calendar?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-weather-in-your-calendar)
+ISC
